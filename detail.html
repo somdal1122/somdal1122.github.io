@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="detail.css" rel="stylesheet">
+    <link href="../normalize.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body class="bd">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+        </script>
+
+<div class="container mt-3">
+  <div class="card p-3">
+    <h4 class="shop-list">상품 / 가격</h4>
+  </div>
+</div>
+
+
+
+
+<form class="container my-5 form-group-1">
+  <p>상품선택#1</p>
+  <select class="form-select mt-2">
+    <option>..상품 선택</option>
+    <option>셔츠</option>
+    <option>모자</option>
+    <option>신발</option>
+    <option>청바지</option>
+    <option>벨트</option>
+  </select>
+  <select class="form-select mt-2 hide">
+    <option>..사이즈 선택</option>
+    <option>60</option>
+    <option>70</option>
+    <option>80</option>
+    <option>90</option>
+    <option>100</option>
+  </select>
+  <select class="form-select mt-2 hide">
+    <option>..색상 선택</option>
+    <option>검은색</option>
+    <option>하얀색</option>
+    <option>회색</option>
+    <option>파란색</option>
+    <option>노란색</option>
+  </select>
+</form>
+
+<form class="container my-5 form-group-2">
+  <p>상품선택#2</p>
+  <select class="form-select mt-2">
+    <option>..상품 선택</option>
+    <option>권총</option>
+    <option>저격총</option>
+    <option>돌격소총</option>
+    <option>샷건</option>
+    <option>AK-47</option>
+  </select>
+  <select class="form-select mt-2 hide">
+    <option>..색상 선택</option>
+    <option>검은색</option>
+    <option>빨간색</option>
+  </select>
+</form>
+
+<script>
+  var zoomGun = ['4배율','8배율','레이저','수직손잡이'];
+  var FS1 = document.querySelectorAll('.form-group-1 .form-select');
+  var FS2 = document.querySelectorAll('.form-group-2 .form-select');
+  for(let j = 0; j < FS1.length;j++)
+  {
+    FS1[j].addEventListener('change', function(){
+      FS1[j+1].classList.remove('hide');
+    });
+  }
+
+  FS2[0].addEventListener('change',function(){
+    if(FS2[0].value == "저격총" || FS2[0].value == "AK-47")
+    {
+      FS2[1].classList.remove('hide');
+      if(FS2[0].value == "저격총")
+      {
+        document.querySelectorAll('.form-group-2 .form-select')[1].innerHTML = "";
+        zoomGun.forEach(element => {
+          var addobj = `<option>${element}</option>`;
+          document.querySelectorAll('.form-group-2 .form-select')[1].insertAdjacentHTML('beforeend',addobj);
+        });
+        // var AddObjectSelect = '<option>..파츠 선택</option><option>4배율</option><option>8배율</option>';
+        // document.querySelectorAll('.form-group-2 .form-select')[1].innerHTML = AddObjectSelect;
+      }
+      else
+      {
+        var AddObjectSelect = `<option>..색상 선택</option>
+                               <option>검은색</option>
+                               <option>빨간색</option>`;
+        document.querySelectorAll('.form-group-2 .form-select')[1].innerHTML = AddObjectSelect;
+      }
+    }
+    else
+    {
+      FS2[1].classList.add('hide');
+    }
+  });
+
+</script>
+
+
+
+<div class="container mt-5">
+    <ul class="list">
+      <li class="tab-button orange" data-id="0">Products</li>
+      <li class="tab-button" data-id="1">Information</li>
+      <li class="tab-button" data-id="2">Shipping</li>
+      <li class="tab-button" data-id="3">Menu</li>
+    </ul>
+    <div class="tab-content show">
+      <p>상품설명입니다. Product</p>
+    </div>
+    <div class="tab-content ">
+      <p>스펙설명입니다. Information</p>
+    </div>
+    <div class="tab-content">
+      <p>배송정보입니다. Shipping</p>
+    </div>
+    <div class="tab-content">
+      <p>메뉴입니다. Menu</p>
+    </div>
+  </div> 
+
+<script>
+  var car = ['소나타',50000,'white'];
+  var car2 = {name:'소나타',price:[50000,100000,20000],color:'white'};
+  document.querySelector('.shop-list').innerHTML = car2.name + ' / ' + car2.price[0];
+</script>
+
+  <script src="tab.js">
+    
+  </script>
+
+  <script>
+    var 출석부 = ['흥민', '영희', '철수', '재석'];
+    function 이름찾기(name)
+    {
+      
+      출석부.forEach(element => {
+        if(element == name)
+        {
+          console.log(name+`이 명단에 있습니다!`);
+        }
+      });
+      // for(let i = 0;i<출석부.length;i++)
+      // {
+      //   if(출석부[i]==name)
+      //   {
+      //     console.log(name+"이 명단에 있습니다!");
+      //   }
+      // }
+    }
+
+    function 곱셈출력()
+    {
+      for(let i = 2;i<=9;i++)
+      {
+        for(let j = 1;j<=9;j++)
+        {
+          console.log(i*j);
+        }
+        console.log("---------");
+      }
+    }
+
+    function 평균점수(arr,score)
+    {
+      var sum = 0;
+      for(let i = 0;i<arr.length;i++)
+      {
+        sum+=arr[i];
+      }
+      var avg = sum / arr.length;
+      if(avg < score)
+      {
+        console.log(`축하드립니다! 점수가 ${score-avg}점만큼 오르셨습니다!`);
+      }
+      else if(avg == score)
+      {
+        console.log("지난번과 같습니다! 이대로만 유지하세요!");
+      }
+      else
+      {
+        console.log(`야이 ㅅ발 점수가 ${avg-score}점 떨어졌잖아요 정신 안차림?`);
+      }
+    }
+  </script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
